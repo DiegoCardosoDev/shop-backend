@@ -1,4 +1,4 @@
-package com.diego.shop.springweb.entities.controllers;
+package com.diego.shop.springweb.controllers;
 
 import com.diego.shop.springweb.entities.Product;
 import com.diego.shop.springweb.services.ProductService;
