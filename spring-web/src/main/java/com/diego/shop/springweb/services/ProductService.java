@@ -3,19 +3,24 @@ package com.diego.shop.springweb.services;
 
 import com.diego.shop.springweb.entities.Product;
 import com.diego.shop.springweb.repositories.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class ProductService {
 
-    @Autowired
+
     private ProductRepository productRepository;
 
     public List<Product> listAll(){
-        List<Product> response = this.productRepository.findAll();
-        return  response;
+        return this.productRepository.findAll();
+    }
+
+    public Product findById(Integer id){
+        Optional<Product> product = this.productRepository.findById(id);
+        return product.orElseThrow(() -> new RuntimeException("not found" + Product.class.getName()));
     }
 }
